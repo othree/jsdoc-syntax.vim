@@ -74,6 +74,7 @@ syntax cluster javascriptDocs                  contains=javascriptDocParamType,j
 
 if exists("did_javascript_hilink")
   
+  HiLink javascriptComment              Comment
   HiLink javascriptDocComment           Comment
   HiLink javascriptCommentTodo          Todo
   HiLink javascriptDocNotation          SpecialComment
