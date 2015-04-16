@@ -24,7 +24,7 @@ endif
 
 syntax case ignore
 
-syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold keepend
+syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold
 syntax match   javascriptDocNotation           contained /@/ nextgroup=javascriptDocTags
 
 syntax keyword javascriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
