@@ -24,12 +24,12 @@ endif
 
 syntax case ignore
 
-syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold
+syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold extend
 syntax match   javascriptDocNotation           contained /@/ nextgroup=javascriptDocTags
 
 syntax keyword javascriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
 syntax keyword javascriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct
-syntax keyword javascriptDocTags               contained example global
+syntax keyword javascriptDocTags               contained example global template
 
 " syntax keyword javascriptDocTags               contained ngdoc nextgroup=javascriptDocNGDirective
 syntax keyword javascriptDocTags               contained ngdoc scope priority animations
