@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:     JSDoc
 " Maintainer:   Kao Wei-Ko(othree) <othree@gmail.com>
-" Last Change:  2015-04-16
-" Version:      0.1
+" Last Change:  2018-04-05
+" Version:      0.2
 " Changes:      Go to https://github.com/othree/jsdoc-syntax.vim
 
 
@@ -24,12 +24,12 @@ endif
 
 syntax case ignore
 
-syntax region  javascriptDocComment            matchgroup=javascriptComment start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold extend
-syntax match   javascriptDocNotation           contained /@/ nextgroup=javascriptDocTags
+syntax region  javascriptDocComment            start="/\*\*"  end="\*/" contains=javascriptDocNotation,javascriptCommentTodo,@Spell fold keepend
+syntax match   javascriptDocNotation           contained /\W@/ nextgroup=javascriptDocTags
 
 syntax keyword javascriptDocTags               contained constant constructor constructs function ignore inner private public readonly static
 syntax keyword javascriptDocTags               contained const dict expose inheritDoc interface nosideeffects override protected struct
-syntax keyword javascriptDocTags               contained example global template
+syntax keyword javascriptDocTags               contained example global
 
 " syntax keyword javascriptDocTags               contained ngdoc nextgroup=javascriptDocNGDirective
 syntax keyword javascriptDocTags               contained ngdoc scope priority animations
@@ -42,12 +42,13 @@ syntax keyword javascriptDocTags               contained arguments callback lend
 syntax keyword javascriptDocTags               contained variation nextgroup=javascriptDocNumParam skipwhite
 
 syntax keyword javascriptDocTags               contained author class classdesc copyright default defaultvalue nextgroup=javascriptDocDesc skipwhite
-syntax keyword javascriptDocTags               contained deprecated description external host nextgroup=javascriptDocDesc skipwhite
+syntax keyword javascriptDocTags               contained deprecated description desc external host nextgroup=javascriptDocDesc skipwhite
 syntax keyword javascriptDocTags               contained file fileOverview overview namespace requires since version nextgroup=javascriptDocDesc skipwhite
 syntax keyword javascriptDocTags               contained summary todo license preserve nextgroup=javascriptDocDesc skipwhite
 
 syntax keyword javascriptDocTags               contained borrows exports nextgroup=javascriptDocA skipwhite
-syntax keyword javascriptDocTags               contained param arg argument property prop module nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
+syntax keyword javascriptDocTags               contained param arg argument property prop module submodule nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
+syntax keyword javascriptDocTags               contained type nextgroup=javascriptDocParamType skipwhite
 syntax keyword javascriptDocTags               contained define enum extends implements this typedef nextgroup=javascriptDocParamType skipwhite
 syntax keyword javascriptDocTags               contained return returns throws exception nextgroup=javascriptDocParamType,javascriptDocParamName skipwhite
 syntax keyword javascriptDocTags               contained see nextgroup=javascriptDocRef skipwhite
@@ -55,6 +56,14 @@ syntax keyword javascriptDocTags               contained see nextgroup=javascrip
 " plugins
 syntax keyword javascriptDocTags               contained category inheritparams nextgroup=javascriptDocParam skipwhite
 syntax keyword javascriptDocTags               contained toparam nextgroup=javascriptDocNamedParamType,javascriptDocParamName skipwhite
+
+" syntax for event firing
+syntax keyword javascriptDocTags               contained emits fires nextgroup=javascriptDocEventRef skipwhite
+
+" ESDoc
+syntax keyword javascriptDocTags               contained experimental nextgroup=javascriptDocDesc skipwhite
+syntax keyword javascriptDocTags               contained listens nextgroup=javascriptDocNamedParamType skipwhite
+syntax keyword javascriptDocTags               contained test nextgroup=javascriptDocParamType skipwhite
 
 syntax keyword javascriptDocTags               contained function func method nextgroup=javascriptDocName skipwhite
 syntax match   javascriptDocName               contained /\h\w*/
@@ -70,7 +79,7 @@ syntax match   javascriptDocAs                 contained /\s*as\s*/ nextgroup=ja
 syntax match   javascriptDocB                  contained /\%(#\|\w\|\.\|:\|\/\)\+/
 syntax match   javascriptDocParam              contained /\%(#\|\w\|\.\|:\|\/\|-\)\+/
 syntax match   javascriptDocNumParam           contained /\d\+/
-syntax match   javascriptDocRef                contained /\%(#\|\w\|\.\|:\|\/\)\+/
+syntax match   javascriptDocRef                contained /\%(#\|\w\|\.\|:\|\/\|\-\)\+/
 syntax region  javascriptDocLinkTag            contained matchgroup=javascriptDocLinkTag start=/{/ end=/}/ contains=javascriptDocTags
 
 syntax cluster javascriptDocs                  contains=javascriptDocParamType,javascriptDocNamedParamType,javascriptDocParam
